@@ -9,7 +9,7 @@ namespace Spryker\Zed\Api\Business\Exception;
 
 use Exception;
 
-class EntityNotFoundException extends Exception
+class PluginNotFoundException extends Exception
 {
 
     /**
