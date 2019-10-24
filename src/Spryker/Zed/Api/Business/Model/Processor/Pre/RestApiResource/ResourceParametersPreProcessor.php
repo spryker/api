@@ -5,7 +5,7 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace Spryker\Zed\Api\Business\Model\Processor\Pre\Resource;
+namespace Spryker\Zed\Api\Business\Model\Processor\Pre\RestApiResource;
 
 use Generated\Shared\Transfer\ApiRequestTransfer;
 use Spryker\Zed\Api\Business\Model\Processor\Pre\PreProcessorInterface;
@@ -14,10 +14,10 @@ use Spryker\Zed\Api\Business\Model\Processor\Pre\PreProcessorInterface;
  * @method \Spryker\Zed\Api\Communication\ApiCommunicationFactory getFactory()
  * @method \Spryker\Zed\Api\Business\ApiFacadeInterface getFacade()
  */
-class ResourcePreProcessor implements PreProcessorInterface
+class ResourceParametersPreProcessor implements PreProcessorInterface
 {
     /**
-     * Resolves the first part of the URL path as resource.
+     * Maps all remaining path segments as resource params.
      *
      * @param \Generated\Shared\Transfer\ApiRequestTransfer $apiRequestTransfer
      *
@@ -25,22 +25,18 @@ class ResourcePreProcessor implements PreProcessorInterface
      */
     public function process(ApiRequestTransfer $apiRequestTransfer)
     {
-        // GET orders/1
         $path = $apiRequestTransfer->getPath();
 
-        $resource = $path;
-
-        $position = strpos($path, '/');
-        if ($position !== false) {
-            $resource = substr($path, 0, $position);
-            $path = substr($path, strlen($resource) + 1);
-        } else {
-            $path = '';
+        $elements = [];
+        if ($path !== '') {
+            $elements[] = $path;
         }
 
-        $apiRequestTransfer->setResource($resource);
+        if (strpos($path, '/') !== false) {
+            $elements = explode('/', $path);
+        }
 
-        $apiRequestTransfer->setPath($path);
+        $apiRequestTransfer->setResourceParameters($elements);
 
         return $apiRequestTransfer;
     }

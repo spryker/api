@@ -5,7 +5,7 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace Spryker\Zed\Api\Business\Model\Processor\Pre\Resource;
+namespace Spryker\Zed\Api\Business\Model\Processor\Pre\RestApiResource;
 
 use Generated\Shared\Transfer\ApiRequestTransfer;
 use Spryker\Zed\Api\ApiConfig;
