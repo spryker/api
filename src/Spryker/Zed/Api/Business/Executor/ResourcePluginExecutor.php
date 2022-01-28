@@ -5,7 +5,7 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace Spryker\Zed\Api\Business\Model;
+namespace Spryker\Zed\Api\Business\Executor;
 
 use Generated\Shared\Transfer\ApiOptionsTransfer;
 use Spryker\Zed\Api\ApiConfig;
@@ -14,26 +14,26 @@ use Spryker\Zed\Api\Dependency\Plugin\ApiResourcePluginInterface;
 use Spryker\Zed\Api\Dependency\Plugin\OptionsForCollectionInterface;
 use Spryker\Zed\Api\Dependency\Plugin\OptionsForItemInterface;
 
-class ResourceHandler implements ResourceHandlerInterface
+class ResourcePluginExecutor implements ResourcePluginExecutorInterface
 {
     /**
      * @var array<\Spryker\Zed\Api\Dependency\Plugin\ApiResourcePluginInterface>
      */
-    protected $pluginCollection;
+    protected $apiResourcePlugins;
 
     /**
      * @var \Spryker\Zed\Api\ApiConfig
      */
-    protected $config;
+    protected $apiConfig;
 
     /**
-     * @param array<\Spryker\Zed\Api\Dependency\Plugin\ApiResourcePluginInterface> $pluginCollection
-     * @param \Spryker\Zed\Api\ApiConfig $config
+     * @param array<\Spryker\Zed\Api\Dependency\Plugin\ApiResourcePluginInterface> $apiResourcePlugins
+     * @param \Spryker\Zed\Api\ApiConfig $apiConfig
      */
-    public function __construct(array $pluginCollection, ApiConfig $config)
+    public function __construct(array $apiResourcePlugins, ApiConfig $apiConfig)
     {
-        $this->pluginCollection = $pluginCollection;
-        $this->config = $config;
+        $this->apiResourcePlugins = $apiResourcePlugins;
+        $this->apiConfig = $apiConfig;
     }
 
     /**
@@ -48,30 +48,30 @@ class ResourceHandler implements ResourceHandlerInterface
      */
     public function execute($resource, $method, $id, array $params)
     {
-        foreach ($this->pluginCollection as $plugin) {
-            if (mb_strtolower($plugin->getResourceName()) !== mb_strtolower($resource)) {
+        foreach ($this->apiResourcePlugins as $apiResourcePlugin) {
+            if (mb_strtolower($apiResourcePlugin->getResourceName()) !== mb_strtolower($resource)) {
                 continue;
             }
 
             if ($method === ApiConfig::ACTION_OPTIONS) {
-                return $this->getOptions($plugin, $id, $params);
+                return $this->getOptions($apiResourcePlugin, $id, $params);
             }
 
             /** @var callable $callable */
-            $callable = [$plugin, $method];
+            $callable = [$apiResourcePlugin, $method];
+            if (!is_callable($callable)) {
+                throw new ApiDispatchingException($this->createUnsupportedMethodErrorMessage($method, $resource));
+            }
+
             /** @var \Generated\Shared\Transfer\ApiItemTransfer|\Generated\Shared\Transfer\ApiCollectionTransfer $responseTransfer */
             $responseTransfer = call_user_func_array($callable, $params);
-            $apiOptionsTransfer = $this->getOptions($plugin, $id, $params);
+            $apiOptionsTransfer = $this->getOptions($apiResourcePlugin, $id, $params);
             $responseTransfer->setOptions($apiOptionsTransfer->getOptions());
 
             return $responseTransfer;
         }
 
-        throw new ApiDispatchingException(sprintf(
-            'Unsupported method "%s" for resource "%s"',
-            $method,
-            $resource,
-        ));
+        throw new ApiDispatchingException($this->createUnsupportedMethodErrorMessage($method, $resource));
     }
 
     /**
@@ -106,7 +106,7 @@ class ResourceHandler implements ResourceHandlerInterface
         if ($plugin instanceof OptionsForItemInterface) {
             $options = $plugin->getHttpMethodsForItem($params);
         } else {
-            $options = $this->config->getHttpMethodsForItem();
+            $options = $this->apiConfig->getHttpMethodsForItem();
         }
 
         if (!in_array(ApiConfig::HTTP_METHOD_OPTIONS, $options)) {
@@ -127,7 +127,7 @@ class ResourceHandler implements ResourceHandlerInterface
         if ($plugin instanceof OptionsForCollectionInterface) {
             $options = $plugin->getHttpMethodsForCollection($params);
         } else {
-            $options = $this->config->getHttpMethodsForCollection();
+            $options = $this->apiConfig->getHttpMethodsForCollection();
         }
 
         if (!in_array(ApiConfig::HTTP_METHOD_OPTIONS, $options)) {
@@ -135,5 +135,16 @@ class ResourceHandler implements ResourceHandlerInterface
         }
 
         return $options;
+    }
+
+    /**
+     * @param string $method
+     * @param string $resource
+     *
+     * @return string
+     */
+    protected function createUnsupportedMethodErrorMessage(string $method, string $resource): string
+    {
+        return sprintf('Unsupported method "%s" for resource "%s"', $method, $resource);
     }
 }

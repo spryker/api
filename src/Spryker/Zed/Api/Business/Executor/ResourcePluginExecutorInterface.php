@@ -5,9 +5,9 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace Spryker\Zed\Api\Business\Model;
+namespace Spryker\Zed\Api\Business\Executor;
 
-interface ResourceHandlerInterface
+interface ResourcePluginExecutorInterface
 {
     /**
      * @param string $resource
