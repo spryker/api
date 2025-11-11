@@ -5,7 +5,7 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace SprykerTest\Zed\Api\Business\Facade;
+namespace SprykerTest\Zed\Api\Business;
 
 use Codeception\Test\Unit;
 use Generated\Shared\Transfer\ApiItemTransfer;
@@ -17,7 +17,6 @@ use Generated\Shared\Transfer\ApiItemTransfer;
  * @group Zed
  * @group Api
  * @group Business
- * @group Facade
  * @group Facade
  * @group ApiFacadeTest
  * Add your own group annotations below this line
