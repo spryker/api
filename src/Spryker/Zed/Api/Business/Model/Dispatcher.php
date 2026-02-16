@@ -111,6 +111,7 @@ class Dispatcher implements DispatcherInterface
                 return $this->apiResponseMapper->mapApiCollectionTransferToApiResponseTransfer($apiPluginCallResponseTransfer, $apiResponseTransfer);
             }
 
+            /** @phpstan-ignore instanceof.alwaysTrue */
             if ($apiPluginCallResponseTransfer instanceof ApiItemTransfer) {
                 return $this->apiResponseMapper->mapApiItemTransferToApiResponseTransfer($apiPluginCallResponseTransfer, $apiResponseTransfer);
             }

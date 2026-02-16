@@ -74,8 +74,9 @@ class ApiControllerEventListener implements ApiControllerEventListenerInterface
             return;
         }
 
-        /** @var array $currentController */
         $currentController = $controllerEvent->getController();
+
+        /** @phpstan-ignore offsetAccess.nonArray */
         [$controller, $action] = $currentController;
 
         if (!$controller instanceof AbstractApiController) {

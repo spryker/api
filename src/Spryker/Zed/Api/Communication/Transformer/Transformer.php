@@ -110,7 +110,8 @@ class Transformer implements TransformerInterface
         }
 
         $result = $apiResponseTransfer->getData();
-        if ($result !== null) {
+
+        if ($result !== []) {
             $content['data'] = $result;
         }
 

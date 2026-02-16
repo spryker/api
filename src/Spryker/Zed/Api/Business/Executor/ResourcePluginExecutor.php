@@ -59,6 +59,8 @@ class ResourcePluginExecutor implements ResourcePluginExecutorInterface
 
             /** @var callable $callable */
             $callable = [$apiResourcePlugin, $method];
+
+            /** @phpstan-ignore function.alreadyNarrowedType */
             if (!is_callable($callable)) {
                 throw new ApiDispatchingException($this->createUnsupportedMethodErrorMessage($method, $resource));
             }
