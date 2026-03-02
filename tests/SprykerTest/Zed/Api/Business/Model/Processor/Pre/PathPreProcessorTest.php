@@ -26,17 +26,11 @@ use Spryker\Zed\Api\Business\Model\Processor\Pre\PathPreProcessor;
  */
 class PathPreProcessorTest extends Unit
 {
-    /**
-     * @return void
-     */
     public function setUp(): void
     {
         parent::setUp();
     }
 
-    /**
-     * @return void
-     */
     public function testProcess(): void
     {
         $processor = new PathPreProcessor();
@@ -50,9 +44,6 @@ class PathPreProcessorTest extends Unit
         $this->assertSame('resource-name', $apiRequestTransferAfter->getPath());
     }
 
-    /**
-     * @return void
-     */
     public function testProcessWithAdditionalParams(): void
     {
         $processor = new PathPreProcessor();
@@ -66,9 +57,6 @@ class PathPreProcessorTest extends Unit
         $this->assertSame('resource-name/something/more', $apiRequestTransferAfter->getPath());
     }
 
-    /**
-     * @return void
-     */
     public function testProcessWithQueryString(): void
     {
         $processor = new PathPreProcessor();

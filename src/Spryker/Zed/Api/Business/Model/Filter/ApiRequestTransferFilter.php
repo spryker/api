@@ -24,11 +24,6 @@ class ApiRequestTransferFilter implements ApiRequestTransferFilterInterface
         $this->apiRequestTransferFilterPlugins = $apiRequestTransferFilterPlugins;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ApiRequestTransfer $apiRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\ApiRequestTransfer
-     */
     public function filter(ApiRequestTransfer $apiRequestTransfer): ApiRequestTransfer
     {
         foreach ($this->apiRequestTransferFilterPlugins as $apiRequestTransferFilterPlugin) {

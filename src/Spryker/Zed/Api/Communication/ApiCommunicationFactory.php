@@ -25,9 +25,6 @@ use Spryker\Zed\Kernel\Communication\AbstractCommunicationFactory;
  */
 class ApiCommunicationFactory extends AbstractCommunicationFactory
 {
-    /**
-     * @return \Spryker\Zed\Api\Communication\EventListener\ApiControllerEventListenerInterface
-     */
     public function createApiControllerEventListener(): ApiControllerEventListenerInterface
     {
         return new ApiControllerEventListener(
@@ -37,9 +34,6 @@ class ApiCommunicationFactory extends AbstractCommunicationFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\Api\Communication\Transformer\TransformerInterface
-     */
     public function createTransformer(): TransformerInterface
     {
         return new Transformer(
@@ -49,9 +43,6 @@ class ApiCommunicationFactory extends AbstractCommunicationFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\Api\Communication\Resolver\FormatterResolverInterface
-     */
     public function createFormatterResolver(): FormatterResolverInterface
     {
         return new FormatterResolver([
@@ -61,17 +52,11 @@ class ApiCommunicationFactory extends AbstractCommunicationFactory
         ]);
     }
 
-    /**
-     * @return \Spryker\Zed\Api\Communication\Formatter\FormatterInterface
-     */
     public function createJsonFormatter(): FormatterInterface
     {
         return new JsonFormatter($this->getUtilEncodingService());
     }
 
-    /**
-     * @return \Spryker\Zed\Api\Dependency\Service\ApiToUtilEncodingServiceInterface
-     */
     public function getUtilEncodingService(): ApiToUtilEncodingServiceInterface
     {
         return $this->getProvidedDependency(ApiDependencyProvider::SERVICE_ENCODING);

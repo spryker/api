@@ -27,17 +27,11 @@ use Spryker\Zed\Api\Business\Model\Processor\Pre\RestApiResource\ResourcePreProc
  */
 class ResourcePreProcessorTest extends Unit
 {
-    /**
-     * @return void
-     */
     public function setUp(): void
     {
         parent::setUp();
     }
 
-    /**
-     * @return void
-     */
     public function testProcess(): void
     {
         $processor = new ResourcePreProcessor();

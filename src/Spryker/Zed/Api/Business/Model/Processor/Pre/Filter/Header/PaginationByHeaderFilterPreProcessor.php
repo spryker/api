@@ -24,19 +24,11 @@ class PaginationByHeaderFilterPreProcessor implements PreProcessorInterface
      */
     protected $apiConfig;
 
-    /**
-     * @param \Spryker\Zed\Api\ApiConfig $apiConfig
-     */
     public function __construct(ApiConfig $apiConfig)
     {
         $this->apiConfig = $apiConfig;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ApiRequestTransfer $apiRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\ApiRequestTransfer
-     */
     public function process(ApiRequestTransfer $apiRequestTransfer): ApiRequestTransfer
     {
         $headers = $apiRequestTransfer->getHeaderData();

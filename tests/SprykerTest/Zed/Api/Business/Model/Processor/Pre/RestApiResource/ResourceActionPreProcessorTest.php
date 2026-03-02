@@ -28,17 +28,11 @@ use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
  */
 class ResourceActionPreProcessorTest extends Unit
 {
-    /**
-     * @return void
-     */
     public function setUp(): void
     {
         parent::setUp();
     }
 
-    /**
-     * @return void
-     */
     public function testProcessGet(): void
     {
         $processor = new ResourceActionPreProcessor();
@@ -51,9 +45,6 @@ class ResourceActionPreProcessorTest extends Unit
         $this->assertSame('get', $apiRequestTransferAfter->getResourceAction());
     }
 
-    /**
-     * @return void
-     */
     public function testProcessPost(): void
     {
         $processor = new ResourceActionPreProcessor();
@@ -66,9 +57,6 @@ class ResourceActionPreProcessorTest extends Unit
         $this->assertSame('add', $apiRequestTransferAfter->getResourceAction());
     }
 
-    /**
-     * @return void
-     */
     public function testProcessPostInvalid(): void
     {
         $this->expectException(BadRequestHttpException::class);
@@ -81,9 +69,6 @@ class ResourceActionPreProcessorTest extends Unit
         $processor->process($apiRequestTransfer);
     }
 
-    /**
-     * @return void
-     */
     public function testProcessPatch(): void
     {
         $processor = new ResourceActionPreProcessor();
@@ -96,9 +81,6 @@ class ResourceActionPreProcessorTest extends Unit
         $this->assertSame('update', $apiRequestTransferAfter->getResourceAction());
     }
 
-    /**
-     * @return void
-     */
     public function testProcessDelete(): void
     {
         $processor = new ResourceActionPreProcessor();
@@ -111,9 +93,6 @@ class ResourceActionPreProcessorTest extends Unit
         $this->assertSame('remove', $apiRequestTransferAfter->getResourceAction());
     }
 
-    /**
-     * @return void
-     */
     public function testProcessFind(): void
     {
         $processor = new ResourceActionPreProcessor();

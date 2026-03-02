@@ -13,12 +13,6 @@ use Spryker\Shared\Kernel\Transfer\AbstractTransfer;
 
 class ApiDataCreator implements ApiDataCreatorInterface
 {
-    /**
-     * @param \Spryker\Shared\Kernel\Transfer\AbstractTransfer|null $transfer
-     * @param string|null $id
-     *
-     * @return \Generated\Shared\Transfer\ApiItemTransfer
-     */
     public function createApiItemTransfer(?AbstractTransfer $transfer = null, ?string $id = null): ApiItemTransfer
     {
         return (new ApiItemTransfer())

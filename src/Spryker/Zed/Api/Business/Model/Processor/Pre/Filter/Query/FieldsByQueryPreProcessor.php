@@ -17,11 +17,6 @@ class FieldsByQueryPreProcessor implements PreProcessorInterface
      */
     public const FIELDS = 'fields';
 
-    /**
-     * @param \Generated\Shared\Transfer\ApiRequestTransfer $apiRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\ApiRequestTransfer
-     */
     public function process(ApiRequestTransfer $apiRequestTransfer): ApiRequestTransfer
     {
         $queryStrings = $apiRequestTransfer->getQueryData();

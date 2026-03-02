@@ -362,25 +362,16 @@ class ApiBusinessFactory extends AbstractBusinessFactory
         return $this->getProvidedDependency(ApiDependencyProvider::PLUGINS_API_REQUEST_TRANSFER_FILTER);
     }
 
-    /**
-     * @return \Symfony\Component\Routing\RouterInterface
-     */
     public function createApiRouter(): RouterInterface
     {
         return new ApiRouter($this->getConfig());
     }
 
-    /**
-     * @return \Spryker\Zed\Api\Business\Mapper\ApiResponseMapperInterface
-     */
     public function createApiResponseMapper(): ApiResponseMapperInterface
     {
         return new ApiResponseMapper();
     }
 
-    /**
-     * @return \Spryker\Zed\Api\Business\Creator\ApiDataCreatorInterface
-     */
     public function createApiDataCreator(): ApiDataCreatorInterface
     {
         return new ApiDataCreator();

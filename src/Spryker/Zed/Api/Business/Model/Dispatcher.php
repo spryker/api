@@ -42,12 +42,6 @@ class Dispatcher implements DispatcherInterface
      */
     protected $apiResponseMapper;
 
-    /**
-     * @param \Spryker\Zed\Api\Business\Executor\ResourcePluginExecutorInterface $resourcePluginExecutor
-     * @param \Spryker\Zed\Api\Business\Model\ProcessorInterface $processor
-     * @param \Spryker\Zed\Api\Business\Model\Validator\ApiValidatorInterface $apiValidator
-     * @param \Spryker\Zed\Api\Business\Mapper\ApiResponseMapperInterface $apiResponseMapper
-     */
     public function __construct(
         ResourcePluginExecutorInterface $resourcePluginExecutor,
         ProcessorInterface $processor,
@@ -80,11 +74,6 @@ class Dispatcher implements DispatcherInterface
         return $apiResponseTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ApiRequestTransfer $apiRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\ApiResponseTransfer
-     */
     protected function dispatchToResource(ApiRequestTransfer $apiRequestTransfer): ApiResponseTransfer
     {
         $apiResponseTransfer = new ApiResponseTransfer();

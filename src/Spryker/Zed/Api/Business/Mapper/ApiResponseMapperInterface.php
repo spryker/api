@@ -14,23 +14,11 @@ use Generated\Shared\Transfer\ApiResponseTransfer;
 
 interface ApiResponseMapperInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\ApiCollectionTransfer $apiCollectionTransfer
-     * @param \Generated\Shared\Transfer\ApiResponseTransfer $apiResponseTransfer
-     *
-     * @return \Generated\Shared\Transfer\ApiResponseTransfer
-     */
     public function mapApiCollectionTransferToApiResponseTransfer(
         ApiCollectionTransfer $apiCollectionTransfer,
         ApiResponseTransfer $apiResponseTransfer
     ): ApiResponseTransfer;
 
-    /**
-     * @param \Generated\Shared\Transfer\ApiItemTransfer $apiItemTransfer
-     * @param \Generated\Shared\Transfer\ApiResponseTransfer $apiResponseTransfer
-     *
-     * @return \Generated\Shared\Transfer\ApiResponseTransfer
-     */
     public function mapApiItemTransferToApiResponseTransfer(
         ApiItemTransfer $apiItemTransfer,
         ApiResponseTransfer $apiResponseTransfer

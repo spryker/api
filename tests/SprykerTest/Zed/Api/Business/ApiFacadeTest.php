@@ -38,9 +38,6 @@ class ApiFacadeTest extends Unit
      */
     protected $tester;
 
-    /**
-     * @return void
-     */
     public function testCreateApiCollectionWithItems(): void
     {
         // Arrange
@@ -59,9 +56,6 @@ class ApiFacadeTest extends Unit
         $this->assertSame($data[1][static::KEY_DATA][static::KEY_NAME], 'newer');
     }
 
-    /**
-     * @return void
-     */
     public function testCreateApiCollectionWithoutItems(): void
     {
         // Act
@@ -72,9 +66,6 @@ class ApiFacadeTest extends Unit
         $this->assertEmpty($apiCollectionTransfer->getData());
     }
 
-    /**
-     * @return void
-     */
     public function testCreateApiItem(): void
     {
         // Arrange
@@ -88,9 +79,6 @@ class ApiFacadeTest extends Unit
         $this->assertSame('1', $apiItemTransfer->getId());
     }
 
-    /**
-     * @return void
-     */
     public function testCreateApiItemWithoutItemDataAndId(): void
     {
         // Act
@@ -101,9 +89,6 @@ class ApiFacadeTest extends Unit
         $this->assertEmpty($apiItemTransfer->getId());
     }
 
-    /**
-     * @return void
-     */
     public function testCreateApiItemWithoutItemData(): void
     {
         // Act
@@ -114,9 +99,6 @@ class ApiFacadeTest extends Unit
         $this->assertSame('1', $apiItemTransfer->getId());
     }
 
-    /**
-     * @return void
-     */
     public function testCreateApiItemWithoutItemId(): void
     {
         // Arrange

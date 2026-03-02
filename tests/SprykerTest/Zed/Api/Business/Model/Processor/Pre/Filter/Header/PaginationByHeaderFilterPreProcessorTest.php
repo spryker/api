@@ -31,17 +31,11 @@ use Spryker\Zed\Api\Business\Model\Processor\Pre\Filter\Header\PaginationByHeade
  */
 class PaginationByHeaderFilterPreProcessorTest extends Unit
 {
-    /**
-     * @return void
-     */
     public function setUp(): void
     {
         parent::setUp();
     }
 
-    /**
-     * @return void
-     */
     public function testProcessWithDefaultsPageOne(): void
     {
         $config = new ApiConfig();
@@ -59,9 +53,6 @@ class PaginationByHeaderFilterPreProcessorTest extends Unit
         $this->assertSame(0, $apiRequestTransferAfter->getFilter()->getOffset());
     }
 
-    /**
-     * @return void
-     */
     public function testProcessWithDefaultsPageTwo(): void
     {
         $config = new ApiConfig();
@@ -78,9 +69,6 @@ class PaginationByHeaderFilterPreProcessorTest extends Unit
         $this->assertSame(20, $apiRequestTransferAfter->getFilter()->getOffset());
     }
 
-    /**
-     * @return void
-     */
     public function testProcessWithCustomLimit(): void
     {
         $config = new ApiConfig();
@@ -97,9 +85,6 @@ class PaginationByHeaderFilterPreProcessorTest extends Unit
         $this->assertSame(20, $apiRequestTransferAfter->getFilter()->getOffset());
     }
 
-    /**
-     * @return void
-     */
     public function testProcessWithInvalidOffsetPagination(): void
     {
         $this->expectException(ApiDispatchingException::class);

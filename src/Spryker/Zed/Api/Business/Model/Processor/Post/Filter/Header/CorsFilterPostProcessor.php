@@ -39,20 +39,11 @@ class CorsFilterPostProcessor implements PostProcessorInterface
      */
     protected $apiConfig;
 
-    /**
-     * @param \Spryker\Zed\Api\ApiConfig $apiConfig
-     */
     public function __construct(ApiConfig $apiConfig)
     {
         $this->apiConfig = $apiConfig;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ApiRequestTransfer $apiRequestTransfer
-     * @param \Generated\Shared\Transfer\ApiResponseTransfer $apiResponseTransfer
-     *
-     * @return \Generated\Shared\Transfer\ApiResponseTransfer
-     */
     public function process(ApiRequestTransfer $apiRequestTransfer, ApiResponseTransfer $apiResponseTransfer): ApiResponseTransfer
     {
         $headers = $apiResponseTransfer->getHeaders();

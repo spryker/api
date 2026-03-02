@@ -11,13 +11,7 @@ use Spryker\Zed\Api\Business\Model\Processor\Post\PostProcessorInterface;
 
 interface PostProcessorProviderInterface
 {
-    /**
-     * @return \Spryker\Zed\Api\Business\Model\Processor\Post\PostProcessorInterface
-     */
     public function buildAddActionPostProcessor(): PostProcessorInterface;
 
-    /**
-     * @return \Spryker\Zed\Api\Business\Model\Processor\Post\PostProcessorInterface
-     */
     public function buildRemoveActionPostProcessor(): PostProcessorInterface;
 }

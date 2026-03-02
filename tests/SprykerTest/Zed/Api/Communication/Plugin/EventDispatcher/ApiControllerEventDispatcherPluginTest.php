@@ -33,9 +33,6 @@ class ApiControllerEventDispatcherPluginTest extends Unit
      */
     protected $tester;
 
-    /**
-     * @return void
-     */
     public function testIsNotExecutedWhenNotAnApiRequest(): void
     {
         $eventDispatcher = new EventDispatcher();
@@ -52,9 +49,6 @@ class ApiControllerEventDispatcherPluginTest extends Unit
         $this->assertSame($originalController, $dispatchedEvent->getController());
     }
 
-    /**
-     * @return void
-     */
     public function testIsExecutedWhenAnApiRequest(): void
     {
         $eventDispatcher = new EventDispatcher();
@@ -71,9 +65,6 @@ class ApiControllerEventDispatcherPluginTest extends Unit
         $this->assertNotSame($originalController, $dispatchedEvent->getController());
     }
 
-    /**
-     * @return void
-     */
     public function testApiControllerReturnsResponse(): void
     {
         $eventDispatcher = new EventDispatcher();

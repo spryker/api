@@ -23,12 +23,6 @@ class PaginationByHeaderFilterPostProcessor implements PostProcessorInterface
      */
     public const HEADER_CONTENT_RANGE = 'Content-Range';
 
-    /**
-     * @param \Generated\Shared\Transfer\ApiRequestTransfer $apiRequestTransfer
-     * @param \Generated\Shared\Transfer\ApiResponseTransfer $apiResponseTransfer
-     *
-     * @return \Generated\Shared\Transfer\ApiResponseTransfer
-     */
     public function process(ApiRequestTransfer $apiRequestTransfer, ApiResponseTransfer $apiResponseTransfer): ApiResponseTransfer
     {
         $headers = $apiRequestTransfer->getHeaderData();

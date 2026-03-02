@@ -19,17 +19,11 @@ class PostProcessorProvider implements PostProcessorProviderInterface
      */
     protected $apiConfig;
 
-    /**
-     * @param \Spryker\Zed\Api\ApiConfig $apiConfig
-     */
     public function __construct(ApiConfig $apiConfig)
     {
         $this->apiConfig = $apiConfig;
     }
 
-    /**
-     * @return \Spryker\Zed\Api\Business\Model\Processor\Post\PostProcessorInterface
-     */
     public function buildAddActionPostProcessor(): PostProcessorInterface
     {
         return new AddActionPostProcessor(
@@ -37,9 +31,6 @@ class PostProcessorProvider implements PostProcessorProviderInterface
         );
     }
 
-    /**
-     * @return \Spryker\Zed\Api\Business\Model\Processor\Post\PostProcessorInterface
-     */
     public function buildRemoveActionPostProcessor(): PostProcessorInterface
     {
         return new RemoveActionPostProcessor();

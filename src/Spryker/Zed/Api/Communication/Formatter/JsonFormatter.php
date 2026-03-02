@@ -17,9 +17,6 @@ class JsonFormatter implements FormatterInterface
      */
     protected $utilEncodingService;
 
-    /**
-     * @param \Spryker\Zed\Api\Dependency\Service\ApiToUtilEncodingServiceInterface $utilEncodingService
-     */
     public function __construct(ApiToUtilEncodingServiceInterface $utilEncodingService)
     {
         $this->utilEncodingService = $utilEncodingService;

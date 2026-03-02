@@ -36,20 +36,11 @@ class FindActionPostProcessor implements PostProcessorInterface
      */
     protected $apiConfig;
 
-    /**
-     * @param \Spryker\Zed\Api\ApiConfig $apiConfig
-     */
     public function __construct(ApiConfig $apiConfig)
     {
         $this->apiConfig = $apiConfig;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ApiRequestTransfer $apiRequestTransfer
-     * @param \Generated\Shared\Transfer\ApiResponseTransfer $apiResponseTransfer
-     *
-     * @return \Generated\Shared\Transfer\ApiResponseTransfer
-     */
     public function process(ApiRequestTransfer $apiRequestTransfer, ApiResponseTransfer $apiResponseTransfer): ApiResponseTransfer
     {
         $action = $apiRequestTransfer->getResourceAction();
@@ -93,12 +84,6 @@ class FindActionPostProcessor implements PostProcessorInterface
         return $apiResponseTransfer->setMeta($metaTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ApiPaginationTransfer $paginationTransfer
-     * @param \Generated\Shared\Transfer\ApiRequestTransfer $apiRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\ApiPaginationTransfer
-     */
     protected function generatePaginationUris(
         ApiPaginationTransfer $paginationTransfer,
         ApiRequestTransfer $apiRequestTransfer

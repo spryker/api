@@ -31,17 +31,11 @@ use Spryker\Zed\Api\Business\Model\Processor\Post\Action\FindActionPostProcessor
  */
 class FindActionPostProcessorTest extends Unit
 {
-    /**
-     * @return void
-     */
     public function setUp(): void
     {
         parent::setUp();
     }
 
-    /**
-     * @return void
-     */
     public function testProcessWithDefaultsPageOne(): void
     {
         $config = new ApiConfig();

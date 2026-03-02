@@ -29,17 +29,11 @@ use Spryker\Zed\Api\Business\Model\Processor\Pre\Filter\Query\FieldsByQueryPrePr
  */
 class FieldsByQueryPreProcessorTest extends Unit
 {
-    /**
-     * @return void
-     */
     public function setUp(): void
     {
         parent::setUp();
     }
 
-    /**
-     * @return void
-     */
     public function testProcessEmpty(): void
     {
         $processor = new FieldsByQueryPreProcessor();
@@ -51,9 +45,6 @@ class FieldsByQueryPreProcessorTest extends Unit
         $this->assertSame([], $apiRequestTransferAfter->getFilter()->getFields());
     }
 
-    /**
-     * @return void
-     */
     public function testProcess(): void
     {
         $processor = new FieldsByQueryPreProcessor();

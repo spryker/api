@@ -30,17 +30,11 @@ use Spryker\Zed\Api\Business\Model\Processor\Pre\Filter\Query\PaginationByQueryF
  */
 class PaginationByQueryFilterPreProcessorTest extends Unit
 {
-    /**
-     * @return void
-     */
     public function setUp(): void
     {
         parent::setUp();
     }
 
-    /**
-     * @return void
-     */
     public function testProcessWithDefaults(): void
     {
         $config = new ApiConfig();
@@ -54,9 +48,6 @@ class PaginationByQueryFilterPreProcessorTest extends Unit
         $this->assertSame(0, $apiRequestTransferAfter->getFilter()->getOffset());
     }
 
-    /**
-     * @return void
-     */
     public function testProcessWithDefaultsPageTwo(): void
     {
         $config = new ApiConfig();
@@ -74,9 +65,6 @@ class PaginationByQueryFilterPreProcessorTest extends Unit
         $this->assertSame(20, $apiRequestTransferAfter->getFilter()->getOffset());
     }
 
-    /**
-     * @return void
-     */
     public function testProcessWithCustomLimit(): void
     {
         $config = new ApiConfig();
@@ -94,9 +82,6 @@ class PaginationByQueryFilterPreProcessorTest extends Unit
         $this->assertSame(40, $apiRequestTransferAfter->getFilter()->getOffset());
     }
 
-    /**
-     * @return void
-     */
     public function testProcessWithTooHighLimit(): void
     {
         $config = new ApiConfig();

@@ -28,17 +28,11 @@ use Spryker\Zed\Api\Business\Model\Processor\Pre\Format\FormatTypeByPathPreProce
  */
 class FormatTypeByPathPreProcessorTest extends Unit
 {
-    /**
-     * @return void
-     */
     public function setUp(): void
     {
         parent::setUp();
     }
 
-    /**
-     * @return void
-     */
     public function testProcessEmpty(): void
     {
         $processor = new FormatTypeByPathPreProcessor();
@@ -50,9 +44,6 @@ class FormatTypeByPathPreProcessorTest extends Unit
         $this->assertNull($apiRequestTransferAfter->getFormatType());
     }
 
-    /**
-     * @return void
-     */
     public function testProcessExtension(): void
     {
         $processor = new FormatTypeByPathPreProcessor();

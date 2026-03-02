@@ -139,12 +139,6 @@ class ResourcePluginExecutor implements ResourcePluginExecutorInterface
         return $options;
     }
 
-    /**
-     * @param string $method
-     * @param string $resource
-     *
-     * @return string
-     */
     protected function createUnsupportedMethodErrorMessage(string $method, string $resource): string
     {
         return sprintf('Unsupported method "%s" for resource "%s"', $method, $resource);

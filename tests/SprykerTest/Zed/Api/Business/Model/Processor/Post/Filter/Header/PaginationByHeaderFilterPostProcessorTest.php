@@ -31,17 +31,11 @@ use Spryker\Zed\Api\Business\Model\Processor\Pre\Filter\Header\PaginationByHeade
  */
 class PaginationByHeaderFilterPostProcessorTest extends Unit
 {
-    /**
-     * @return void
-     */
     public function setUp(): void
     {
         parent::setUp();
     }
 
-    /**
-     * @return void
-     */
     public function testProcessWithDefaultsPageOne(): void
     {
         $processor = new PaginationByHeaderFilterPostProcessor();

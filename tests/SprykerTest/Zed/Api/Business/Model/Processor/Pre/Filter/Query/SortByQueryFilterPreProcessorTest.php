@@ -29,17 +29,11 @@ use Spryker\Zed\Api\Business\Model\Processor\Pre\Filter\Query\SortByQueryFilterP
  */
 class SortByQueryFilterPreProcessorTest extends Unit
 {
-    /**
-     * @return void
-     */
     public function setUp(): void
     {
         parent::setUp();
     }
 
-    /**
-     * @return void
-     */
     public function testProcessEmpty(): void
     {
         $processor = new SortByQueryFilterPreProcessor();
@@ -51,9 +45,6 @@ class SortByQueryFilterPreProcessorTest extends Unit
         $this->assertSame([], $apiRequestTransferAfter->getFilter()->getSort());
     }
 
-    /**
-     * @return void
-     */
     public function testProcess(): void
     {
         $processor = new SortByQueryFilterPreProcessor();

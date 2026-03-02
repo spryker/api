@@ -21,12 +21,6 @@ class ApiResponseMapper implements ApiResponseMapperInterface
      */
     protected const MESSAGE_VALIDATION_ERRORS = 'Validation errors.';
 
-    /**
-     * @param \Generated\Shared\Transfer\ApiCollectionTransfer $apiCollectionTransfer
-     * @param \Generated\Shared\Transfer\ApiResponseTransfer $apiResponseTransfer
-     *
-     * @return \Generated\Shared\Transfer\ApiResponseTransfer
-     */
     public function mapApiCollectionTransferToApiResponseTransfer(
         ApiCollectionTransfer $apiCollectionTransfer,
         ApiResponseTransfer $apiResponseTransfer
@@ -42,12 +36,6 @@ class ApiResponseMapper implements ApiResponseMapperInterface
         return $apiResponseTransfer->fromArray($apiCollectionTransfer->toArray(), true);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ApiItemTransfer $apiItemTransfer
-     * @param \Generated\Shared\Transfer\ApiResponseTransfer $apiResponseTransfer
-     *
-     * @return \Generated\Shared\Transfer\ApiResponseTransfer
-     */
     public function mapApiItemTransferToApiResponseTransfer(
         ApiItemTransfer $apiItemTransfer,
         ApiResponseTransfer $apiResponseTransfer
@@ -81,12 +69,6 @@ class ApiResponseMapper implements ApiResponseMapperInterface
             ->setValidationErrors($apiValidationErrorTransfers);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ApiItemTransfer $apiItemTransfer
-     * @param \Generated\Shared\Transfer\ApiMetaTransfer $apiMetaTransfer
-     *
-     * @return \Generated\Shared\Transfer\ApiMetaTransfer
-     */
     public function mapApiItemTransferToApiMetaTransfer(
         ApiItemTransfer $apiItemTransfer,
         ApiMetaTransfer $apiMetaTransfer

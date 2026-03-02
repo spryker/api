@@ -17,11 +17,6 @@ class CriteriaByQueryFilterPreProcessor implements PreProcessorInterface
      */
     public const FILTER = 'filter';
 
-    /**
-     * @param \Generated\Shared\Transfer\ApiRequestTransfer $apiRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\ApiRequestTransfer
-     */
     public function process(ApiRequestTransfer $apiRequestTransfer): ApiRequestTransfer
     {
         $queryStrings = $apiRequestTransfer->getQueryData();

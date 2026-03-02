@@ -45,9 +45,6 @@ class ApiRouter implements RouterInterface
      */
     protected $context;
 
-    /**
-     * @param \Spryker\Zed\Api\ApiConfig $config
-     */
     public function __construct(ApiConfig $config)
     {
         $this->config = $config;
@@ -63,9 +60,6 @@ class ApiRouter implements RouterInterface
         $this->context = $context;
     }
 
-    /**
-     * @return \Symfony\Component\Routing\RequestContext
-     */
     public function getContext(): RequestContext
     {
         return $this->context;
@@ -155,9 +149,6 @@ class ApiRouter implements RouterInterface
         }
     }
 
-    /**
-     * @return string
-     */
     protected function getRoute(): string
     {
         return sprintf('%s/%s/%s', static::MODULE_NAME, static::CONTROLLER_NAME, static::ACTION_NAME);

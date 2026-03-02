@@ -29,17 +29,11 @@ use Spryker\Zed\Api\Business\Model\Processor\Post\Action\RemoveActionPostProcess
  */
 class RemoveActionPostProcessorTest extends Unit
 {
-    /**
-     * @return void
-     */
     public function setUp(): void
     {
         parent::setUp();
     }
 
-    /**
-     * @return void
-     */
     public function testProcessWithDefaultsPageOne(): void
     {
         $processor = new RemoveActionPostProcessor();

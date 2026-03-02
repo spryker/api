@@ -11,10 +11,5 @@ use Generated\Shared\Transfer\ApiRequestTransfer;
 
 interface ApiRequestTransferFilterPluginInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\ApiRequestTransfer $apiRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\ApiRequestTransfer
-     */
     public function filter(ApiRequestTransfer $apiRequestTransfer): ApiRequestTransfer;
 }

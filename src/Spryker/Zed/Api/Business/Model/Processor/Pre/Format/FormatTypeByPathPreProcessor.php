@@ -12,11 +12,6 @@ use Spryker\Zed\Api\Business\Model\Processor\Pre\PreProcessorInterface;
 
 class FormatTypeByPathPreProcessor implements PreProcessorInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\ApiRequestTransfer $apiRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\ApiRequestTransfer
-     */
     public function process(ApiRequestTransfer $apiRequestTransfer): ApiRequestTransfer
     {
         // GET orders/1.json

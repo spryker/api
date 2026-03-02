@@ -33,11 +33,6 @@ class Transformer implements TransformerInterface
      */
     protected $utilEncodingService;
 
-    /**
-     * @param \Spryker\Zed\Api\Communication\Resolver\FormatterResolverInterface $formatterResolver
-     * @param \Spryker\Zed\Api\ApiConfig $apiConfig
-     * @param \Spryker\Zed\Api\Dependency\Service\ApiToUtilEncodingServiceInterface $utilEncodingService
-     */
     public function __construct(
         FormatterResolverInterface $formatterResolver,
         ApiConfig $apiConfig,
@@ -48,13 +43,6 @@ class Transformer implements TransformerInterface
         $this->utilEncodingService = $utilEncodingService;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ApiRequestTransfer $apiRequestTransfer
-     * @param \Generated\Shared\Transfer\ApiResponseTransfer $apiResponseTransfer
-     * @param \Symfony\Component\HttpFoundation\Response $response
-     *
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
     public function transform(ApiRequestTransfer $apiRequestTransfer, ApiResponseTransfer $apiResponseTransfer, Response $response): Response
     {
         $headers = $apiResponseTransfer->getHeaders() + $this->getDefaultResponseHeaders($apiRequestTransfer);
@@ -65,13 +53,6 @@ class Transformer implements TransformerInterface
         return $this->addResponseContent($apiRequestTransfer, $apiResponseTransfer, $response);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ApiResponseTransfer $apiResponseTransfer
-     * @param \Symfony\Component\HttpFoundation\Response $response
-     * @param string $message
-     *
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
     public function transformBadRequest(ApiResponseTransfer $apiResponseTransfer, Response $response, string $message): Response
     {
         $headers = $apiResponseTransfer->getHeaders() + $this->getDefaultResponseHeaders();
@@ -86,13 +67,6 @@ class Transformer implements TransformerInterface
         return $response;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ApiRequestTransfer $apiRequestTransfer
-     * @param \Generated\Shared\Transfer\ApiResponseTransfer $apiResponseTransfer
-     * @param \Symfony\Component\HttpFoundation\Response $response
-     *
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
     protected function addResponseContent(
         ApiRequestTransfer $apiRequestTransfer,
         ApiResponseTransfer $apiResponseTransfer,
@@ -137,11 +111,6 @@ class Transformer implements TransformerInterface
         return $response;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ApiResponseTransfer $apiResponseTransfer
-     *
-     * @return bool
-     */
     protected function isContentless(ApiResponseTransfer $apiResponseTransfer): bool
     {
         return (int)$apiResponseTransfer->getCode() === ApiConfig::HTTP_CODE_NO_CONTENT || $apiResponseTransfer->getType() === ApiOptionsTransfer::class;
@@ -191,11 +160,6 @@ class Transformer implements TransformerInterface
         ];
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ApiRequestTransfer|null $apiRequestTransfer
-     *
-     * @return string
-     */
     protected function createContentTypeHeader(?ApiRequestTransfer $apiRequestTransfer = null): string
     {
         $formatType = $apiRequestTransfer && $apiRequestTransfer->getFormatType() ? $apiRequestTransfer->getFormatType() : 'json';

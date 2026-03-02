@@ -12,11 +12,6 @@ use Generated\Shared\Transfer\ApiRequestTransfer;
 
 class FilterPreProcessor implements PreProcessorInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\ApiRequestTransfer $apiRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\ApiRequestTransfer
-     */
     public function process(ApiRequestTransfer $apiRequestTransfer): ApiRequestTransfer
     {
         $apiFilterTransfer = new ApiFilterTransfer();

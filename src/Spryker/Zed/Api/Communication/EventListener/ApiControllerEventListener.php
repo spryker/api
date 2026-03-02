@@ -46,11 +46,6 @@ class ApiControllerEventListener implements ApiControllerEventListenerInterface
      */
     protected $utilEncodingService;
 
-    /**
-     * @param \Spryker\Zed\Api\Communication\Transformer\TransformerInterface $transformer
-     * @param \Spryker\Zed\Api\Business\ApiFacadeInterface $apiFacade
-     * @param \Spryker\Zed\Api\Dependency\Service\ApiToUtilEncodingServiceInterface $utilEncodingService
-     */
     public function __construct(
         TransformerInterface $transformer,
         ApiFacadeInterface $apiFacade,
@@ -61,11 +56,6 @@ class ApiControllerEventListener implements ApiControllerEventListenerInterface
         $this->utilEncodingService = $utilEncodingService;
     }
 
-    /**
-     * @param \Symfony\Component\HttpKernel\Event\ControllerEvent $controllerEvent
-     *
-     * @return void
-     */
     public function onKernelControllerEvent(ControllerEvent $controllerEvent): void
     {
         $request = $controllerEvent->getRequest();
@@ -98,13 +88,6 @@ class ApiControllerEventListener implements ApiControllerEventListenerInterface
         $controllerEvent->setController($apiController);
     }
 
-    /**
-     * @param \Symfony\Component\HttpFoundation\Request $request
-     * @param \Spryker\Zed\Api\Communication\Controller\AbstractApiController $controller
-     * @param string $action
-     *
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
     protected function executeControllerAction(Request $request, AbstractApiController $controller, string $action): Response
     {
         $apiRequestTransfer = $this->getApiRequestTransfer($request);
@@ -130,11 +113,6 @@ class ApiControllerEventListener implements ApiControllerEventListenerInterface
         return $this->transformer->transform($apiRequestTransfer, $responseTransfer, new Response());
     }
 
-    /**
-     * @param int $code
-     *
-     * @return int
-     */
     protected function resolveStatusCode(int $code): int
     {
         if ($code < ApiConfig::HTTP_CODE_SUCCESS || $code > ApiConfig::HTTP_CODE_INTERNAL_ERROR) {
@@ -187,11 +165,6 @@ class ApiControllerEventListener implements ApiControllerEventListenerInterface
         return $requestTransfer->setRequestData($request->request->all());
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ApiRequestTransfer $apiRequestTransfer
-     *
-     * @return void
-     */
     protected function logRequest(ApiRequestTransfer $apiRequestTransfer): void
     {
         $filteredApiRequestTransfer = $this->apiFacade->filterApiRequestTransfer($apiRequestTransfer);
@@ -204,11 +177,6 @@ class ApiControllerEventListener implements ApiControllerEventListenerInterface
         ));
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ApiResponseTransfer $responseTransfer
-     *
-     * @return void
-     */
     protected function logResponse(ApiResponseTransfer $responseTransfer): void
     {
         $responseTransferData = $responseTransfer->toArray();

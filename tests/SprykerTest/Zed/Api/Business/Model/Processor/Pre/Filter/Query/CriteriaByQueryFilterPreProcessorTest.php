@@ -29,17 +29,11 @@ use Spryker\Zed\Api\Business\Model\Processor\Pre\Filter\Query\CriteriaByQueryFil
  */
 class CriteriaByQueryFilterPreProcessorTest extends Unit
 {
-    /**
-     * @return void
-     */
     public function setUp(): void
     {
         parent::setUp();
     }
 
-    /**
-     * @return void
-     */
     public function testProcessEmpty(): void
     {
         $processor = new CriteriaByQueryFilterPreProcessor();
@@ -51,9 +45,6 @@ class CriteriaByQueryFilterPreProcessorTest extends Unit
         $this->assertSame('{}', $apiRequestTransferAfter->getFilter()->getCriteriaJson());
     }
 
-    /**
-     * @return void
-     */
     public function testProcess(): void
     {
         $processor = new CriteriaByQueryFilterPreProcessor();

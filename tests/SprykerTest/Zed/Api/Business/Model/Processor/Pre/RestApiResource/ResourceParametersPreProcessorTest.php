@@ -27,17 +27,11 @@ use Spryker\Zed\Api\Business\Model\Processor\Pre\RestApiResource\ResourceParamet
  */
 class ResourceParametersPreProcessorTest extends Unit
 {
-    /**
-     * @return void
-     */
     public function setUp(): void
     {
         parent::setUp();
     }
 
-    /**
-     * @return void
-     */
     public function testProcessNoParameters(): void
     {
         $processor = new ResourceParametersPreProcessor();
@@ -49,9 +43,6 @@ class ResourceParametersPreProcessorTest extends Unit
         $this->assertSame([], $apiRequestTransferAfter->getResourceParameters());
     }
 
-    /**
-     * @return void
-     */
     public function testProcessWithParameters(): void
     {
         $processor = new ResourceParametersPreProcessor();

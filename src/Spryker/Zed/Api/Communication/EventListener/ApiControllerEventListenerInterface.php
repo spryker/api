@@ -11,10 +11,5 @@ use Symfony\Component\HttpKernel\Event\ControllerEvent;
 
 interface ApiControllerEventListenerInterface
 {
-    /**
-     * @param \Symfony\Component\HttpKernel\Event\ControllerEvent $controllerEvent
-     *
-     * @return void
-     */
     public function onKernelControllerEvent(ControllerEvent $controllerEvent): void;
 }
